@@ -1,0 +1,56 @@
+{
+	"name": "jagdish-j-p/sbi-pay",
+	"description": "A laravel implementation for SBI payment service",
+	"keywords": [
+		"jagdish-j-p",
+		"SBI",
+		"SBI Payment Gateway",
+		"SBI Pay",
+		"sbi-pay",
+		"sbi-payment",
+		"State Bank of India Payment Gateway"
+	],
+	"homepage": "https://github.com/jagdish-j-p/sbi-pay",
+	"license": "MIT",
+	"type": "library",
+	"authors": [
+		{
+			"name": "Jagdish J P",
+			"email": "jagdish.j.ptl@gmail.com",
+			"role": "Owner"
+		}
+	],
+	"require": {
+		"php": "^7.4|^8.0",
+		"illuminate/support": "^8.0",
+		"laravelcollective/html": "^6.2"
+	},
+	"require-dev": {
+		"orchestra/testbench": "^6.0",
+		"phpunit/phpunit": "^9.3.3"
+	},
+	"autoload": {
+		"psr-4": {
+			"JagdishJP\\SBIPay\\": "src"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"JagdishJP\\SBIPay\\Tests\\": "tests"
+		}
+	},
+	"scripts": {
+		"test": "vendor/bin/phpunit",
+		"test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+	},
+	"config": {
+		"sort-packages": true
+	},
+	"extra": {
+		"laravel": {
+			"providers": [
+				"JagdishJP\\SBIPay\\SBIPayServiceProvider"
+			]
+		}
+	}
+}
