@@ -2,7 +2,6 @@
 
 namespace JagdishJP\SBIPay\Traits;
 
-use Illuminate\Support\Facades\Config;
 use JagdishJP\SBIPay\Constant\Response;
 
 trait Encryption

@@ -84,21 +84,21 @@ class Message
 
     public function __construct()
     {
-        $this->aggregatorId = Config::get('sbipay.aggregator_id');
-        $this->merchantId   = Config::get('sbipay.merchant_id');
-        $this->merchantKey  = Config::get('sbipay.merchant_key');
-        $this->currency     = Config::get('sbipay.currency');
-        $this->operatinMode = Config::get('sbipay.operating_mode');
-        $this->country      = Config::get('sbipay.country');
-        $this->successUrl      = Config::get('sbipay.success_url');
-        $this->failUrl      = Config::get('sbipay.fail_url');
-        $this->payMode      = Config::get('sbipay.pay_mode');
+        $this->aggregatorId             = Config::get('sbipay.aggregator_id');
+        $this->merchantId               = Config::get('sbipay.merchant_id');
+        $this->merchantKey              = Config::get('sbipay.merchant_key');
+        $this->currency                 = Config::get('sbipay.currency');
+        $this->operatinMode             = Config::get('sbipay.operating_mode');
+        $this->country                  = Config::get('sbipay.country');
+        $this->successUrl               = Config::get('sbipay.success_url');
+        $this->failUrl                  = Config::get('sbipay.fail_url');
+        $this->payMode                  = Config::get('sbipay.pay_mode');
         $this->accountIdentifier[]      = Config::get('sbipay.account_identifier');
 
-        $this->referenceId  = Str::random(12);
-        $this->merchantCustomerId      = 'NA';
-        $this->accessMedium      = 'ONLINE';
-        $this->transactionSource      = 'ONLINE';
+        $this->referenceId              = Str::random(12);
+        $this->merchantCustomerId       = 'NA';
+        $this->accessMedium             = 'ONLINE';
+        $this->transactionSource        = 'ONLINE';
         $this->multiAccountDetails      = [];
     }
 }

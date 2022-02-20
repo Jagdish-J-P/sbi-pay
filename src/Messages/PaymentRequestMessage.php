@@ -2,7 +2,6 @@
 
 namespace JagdishJP\SBIPay\Messages;
 
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Validator;
 use JagdishJP\SBIPay\Contracts\Message as Contract;
@@ -20,7 +19,7 @@ class PaymentRequestMessage extends Message implements Contract
         parent::__construct();
         $this->init();
 
-        $this->url = !app()->isLocal()
+        $this->url = ! app()->isLocal()
             ? Config::get('sbipay.urls.production.initiate_payment')
             : Config::get('sbipay.urls.uat.initiate_payment');
     }
@@ -35,9 +34,9 @@ class PaymentRequestMessage extends Message implements Contract
     public function handle($options)
     {
         $data = Validator::make($options, [
-            'order_no'        => 'required',
-            'remark'          => 'required',
-            'amounts.*'          => 'numeric|required',
+            'order_no'                       => 'required',
+            'remark'                         => 'required',
+            'amounts.*'                      => 'numeric|required',
             'account_identifiers.*'          => 'required',
         ])->validate();
 
@@ -87,6 +86,8 @@ class PaymentRequestMessage extends Message implements Contract
 
     /**
      * Format data for multiple account checksum.
+     *
+     * @param mixed $data
      *
      * @return string
      */
