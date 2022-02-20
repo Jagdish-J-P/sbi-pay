@@ -4,94 +4,72 @@ namespace JagdishJP\SBIPay\Constant;
 
 class Response
 {
-	/**
-	 * constant to name response parameters
-	 */
-	public const RESPONSE_PARAMETERS = [
-		/*
-			Merchant Reference Order no
-		*/
-		'merchantOrderNo',
+    /** constant to name response parameters */
+    public const RESPONSE_PARAMETERS = [
+        // Merchant Reference Order no
+        'merchantOrderNo',
 
-		/*
-			SBI Transactin ID
-		*/
-		'transaction_id',
+        // SBI Transactin ID
+        'SBIePayRefID',
 
-		/*
-			Transaction status [SUCCESS, FAIL, PENDING]
-		*/
-		'status',
+        // Transaction status [SUCCESS, FAIL, PENDING]
+        'transaction_status',
 
-		/*
-			Transaction Amount
-		*/
-		'amount',
+        // Transaction Amount
+        'amount',
 
-		/*
-			Currency code
-		*/
-		'currency',
+        // Currency code
+        'currency',
 
-		/*
-			Payment Mode [IMPS, NB, CC, DC]
-		*/
-		'payMode',
+        // Payment Mode [IMPS, NB, CC, DC]
+        'payMode',
 
-		/*
-			Extra details sent while initiating transaction
-		*/
-		'extraDetails',
+        // Extra details sent while initiating transaction
+        'otherDetails',
 
-		/*
-			Reason for transaction failure
-		*/
-		'reason',
+        // Reason for transaction failure
+        'reason',
 
-		/*
-			Bank code
-		*/
-		'bankCode',
+        // Bank code
+        'bankCode',
 
-		/*
-			Bank reference number
-		*/
-		'bankReferenceNumber',
+        // Bank reference number
+        'bankReferenceNumber',
 
-		/*
-			Transaction date (Format: Y-m-d H:i:s)
-		*/
-		'transactionDate',
+        // Transaction date (Format: Y-m-d H:i:s)
+        'transactionDate',
 
-		/*
-			Country code
-		*/
-		'country',
+        // Country code
+        'country',
 
-		/*
-			Challan Identification number generated for Government merchant.
-			Format:
-			MerchantID (7CHAR)+date
-			YYYYMMDD (8 CHAR)+running
-			number(5 CHAR). It will be
-			generated only for successful
-			transactions. For failed
-			transaction, its value would be
-			“NA”
-		*/
-		'CIN',
+        /*
+            Challan Identification number generated for Government merchant.
+            Format:
+            MerchantID (7CHAR)+date
+            YYYYMMDD (8 CHAR)+running
+            number(5 CHAR). It will be
+            generated only for successful
+            transactions. For failed
+            transaction, its value would be
+            “NA”
+        */
+        'CIN',
 
-		/*
-			Reserve fields for future purpose [ref1 - ref9]
- 		*/
-		'ref1',
-		'ref2',
-		'ref3',
-		'ref4',
-		'ref5',
-		'ref6',
-		'ref7',
-		'ref8',
-		'ref9',
-	];
+        // Merchant Id
+        'merchantId',
+
+        // Trahsaciton Fees charged by bank including GST
+        'totalFees',
+
+        // Reserve fields for future purpose [ref1 - ref9]
+        'ref1',
+        'ref2',
+        'ref3',
+        'ref4',
+        'ref5',
+        'ref6',
+        'ref7',
+        'ref8',
+        'ref9',
+    ];
 }

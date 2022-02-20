@@ -24,99 +24,59 @@
 
         <form class="needs-validation" novalidate method="POST" action="{{ route('sbi-pay.payment.auth.request') }}">
             @csrf
-            <input type="hidden" name="flow" value="01" />
-            <input type="hidden" name="reference_id" value="{{ uniqid() }}" />
 
+            @if(isset($errors) && $errors->any())
             {{ implode(',', $errors->all()) }}
+            @endif
+
             <div class="row">
-                <div class="col-md-4 order-md-2 mb-4">
-                    <div class="border p-3 mb-3 rounded">
-                        <h4>Payment Details</h4>
-                        <p class="mb-3 pt-1">Please select your payment details.</p>
-
-                        <div class="alert alert-info">Minimum RM 1.00 and maximum RM 30,000.00</div>
-
-                        <div class="row mb-3">
-                            <div class="col-lg-6 col-sm-12">
-                                <div class="custom-control custom-radio">
-                                    <img src="{{ asset('assets/SBI/Images/sbi-pay.svg') }}" height="64px">
-                                    <input type="hidden" id="sbi-pay" name="payment_mode" value="sbi-pay">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="select_bank"></div>
-                            <div class="col">
-                                {!! Form::select('bank_id', [null => 'Select Bank'] + $banks->toArray(), null, ['class' => 'form-control', 'required' => '']) !!}
-                                <input type="hidden" name="be_message" id="be_message">
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col">
-                                <div class="custom-control custom-checkbox">
-                                    <label class="custom-control-label" for="agree">By clicking on "proceed", you agree
-                                        to
-                                        the <a href="https://www.mepsfpx.com.my/FPXMain/termsAndConditions.jsp"
-                                            target="_blank">terms and conditions</a> of SBI.</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Proceed</button>
-                    </div>
-                </div>
                 <div class="col-md-8 order-md-1">
                     <div class="border p-3 mb-3 rounded">
-                        <h4 class="mb-3">Billing details</h4>
+                        <h4 class="mb-3">
+                            <img src="{{ asset('assets/SBIPay/Images/sbiepay.png') }}" height="30px" style="background: #000066;" class="p-1" />
+                            Billing details
+                        </h4>
                         <div class="row">
                             <div class="col-md-12 mb-3">
-                                <label for="customer_name">Buyer name</label>
-                                <input type="text" class="form-control" id="customer_name" name="customer_name"
-                                    placeholder="Enter buyer name" value="" required>
+                                <label for="order_no">Order No</label>
+                                <input type="text" class="form-control" id="order_no" name="order_no" readonly
+                                    placeholder="Enter reference order no" value="{{ uniqid() }}" required>
                                 <div class="invalid-feedback">
-                                    Valid buyer name is required.
+                                    Valid order no is required.
                                 </div>
                             </div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="amount">Amount</label>
-                            <input type="name" class="form-control" id="amount" name="amount" placeholder="1.00"
-                                value="" required>
+                            <label for="amounts">Amount</label>
+                            <input type="hidden" id="account_identifiers" name="account_identifiers[]" value="{{ Config::get('sbipay.account_identifier') }}" />
+                            <input type="text" class="form-control" id="amounts" name="amounts[]" placeholder="1.00"
+                                value="1.00" required>
                             <div class="invalid-feedback">
                                 Please enter a valid amount.
                             </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="customer_email">Email</label>
-                            <input type="email" class="form-control" id="customer_email" name="customer_email" value=""
-                                placeholder="you@example.com" required>
+                        {{-- <div class="mb-3">
+                            <label for="amounts">Amount</label>
+                            <input type="hidden" id="account_identifiers" name="account_identifiers[]" value="{{ Config::get('sbipay.account_identifier') }}" />
+                            <input type="text" class="form-control" id="amounts" name="amounts[]" placeholder="1.50"
+                                value="1.50" required>
                             <div class="invalid-feedback">
-                                Please enter a valid email address.
+                                Please enter a valid amount.
+                            </div>
+                        </div> --}}
+
+                        <div class="mb-3">
+                            <label for="remark">Remark</label>
+                            <textarea class="form-control" id="remark" name="remark"
+                                placeholder="Enter Remark" required>test</textarea>
+                            <div class="invalid-feedback">
+                                Please enter valid remark
                             </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="fpx_buyerTelephone">Telephone</label>
-                            <input type="tel " class="form-control" id="fpx_buyerTelephone" name="fpx_buyerTelephone"
-                                value="" placeholder="01XXXXXXXX" required>
-                            <div class="invalid-feedback">
-                                Please enter a valid telephone no.
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="product_description">Description <span
-                                    class="text-muted">(Optional)</span></label>
-                            <textarea class="form-control" id="product_description" name="product_description"
-                                placeholder="Enter Product Description" required></textarea>
-                            <div class="invalid-feedback">
-                                Please enter product description
-                            </div>
-                        </div>
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Proceed</button>
                     </div>
                 </div>
             </div>

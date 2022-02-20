@@ -14,29 +14,12 @@
 
 <body>
     <div class="font-sans antialiased text-gray-900">
-        <form id="form" method="post" action="{{ $request->url }}" x-data x-init="$refs.submit.click()">
-            <input type="hidden" name="fpx_msgType" value="{{ $request->type }}" />
-            <input type="hidden" name="fpx_msgToken" value="{{ $request->flow }}" />
-            <input type="hidden" name="fpx_sellerExId" value="{{ $request->merchantId }}" />
-            <input type="hidden" name="fpx_sellerId" value="{{ $request->merchantKey }}" />
-            <input type="hidden" name="fpx_sellerExOrderNo" value="{{ $request->id }}" />
-            <input type="hidden" name="fpx_sellerTxnTime" value="{{ $request->timestamp }}" />
-            <input type="hidden" name="fpx_sellerOrderNo" value="{{ $request->reference }}" />
-            <input type="hidden" name="fpx_sellerBankCode" value="{{ $request->aggregatorId }}" />
-            <input type="hidden" name="fpx_txnCurrency" value="{{ $request->currency }}" />
-            <input type="hidden" name="fpx_txnAmount" value="{{ $request->amount }}" />
-            <input type="hidden" name="fpx_buyerEmail" value="{{ $request->buyerEmail }}" />
-            <input type="hidden" name="fpx_buyerName" value="{{ $request->buyerName }}" />
-            <input type="hidden" name="fpx_buyerBankId" value="{{ $request->targetBankId }}" />
-            <input type="hidden" name="fpx_productDesc" value="{{ $request->productDescription }}" />
-            <input type="hidden" name="fpx_version" value="{{ $request->version }}" />
-            <input type="hidden" name="fpx_checkSum" value="{{ $request->checkSum }}" />
-            {{-- <input type=hidden value="" name="fpx_buyerBankBranch">
-		<input type=hidden value="" name="fpx_buyerAccNo">
-		<input type=hidden value="" name="fpx_buyerId">
-		<input type=hidden value="" name="fpx_makerName">
-		<input type=hidden value="" name="fpx_buyerIban"> --}}
-            <input type="submit" value="Proceed with Payment" x-ref="submit" name="Submit" style=" display: none;">
+        <form id="form" method="post" action="{{ $request->url }}" {{-- x-data x-init="$refs.submit.click()" --}}>
+
+            <input type="hidden" name="EncryptTrans" value="{{ $request->checkSum; }}">
+            <input type="hidden" name="merchIdVal" value="{{ $request->merchantId; }}" />
+            <input type="hidden" name="MultiAccountInstructionDtls" value="{{ $request->multiAccountCheckSum; }}" />
+            <input type="submit" value="Proceed with Payment" x-ref="submit" name="Submit"{{--  style=" display: none;" --}}>
         </form>
     </div>
 </body>

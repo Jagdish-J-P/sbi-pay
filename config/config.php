@@ -1,85 +1,94 @@
 <?php
 
-/*
-	 * You can place your custom package configuration in here.
-	 */
+// You can place your custom package configuration in here.
 return [
-	/**
-	 * The Merchant ID Provided by SBI
-	 *
-	 * You need to contact SBI to request your merchant id.
-	 */
-	'merchant_id' => env('SBIPAY_MERCHANT_ID'),
+    /*
+     * The Merchant ID Provided by SBI
+     *
+     * You need to contact SBI to request your merchant id.
+     */
+    'merchant_id' => env('SBIEPAY_MERCHANT_ID'),
 
-	/**
-	 * The Merchant Seller ID
-	 */
-	'merchant_key' => env('SBIPAY_MERCHANT_KEY'),
+    // The Merchant Seller ID
+    'merchant_key' => env('SBIEPAY_MERCHANT_KEY'),
 
-	/**
-	 * The Aggregator ID Provided by SBI
-	 */
-	'aggregator_id' => env('SBIPAY_AGGREGATOR_ID','SBIEPAY'),
+    // The Aggregator ID Provided by SBI
+    'aggregator_id' => env('SBIEPAY_AGGREGATOR_ID', 'SBIEPAY'),
 
-	/**
-	 * The Default Currency
-	 *
-	 * set the default currency code used for transaction.
-	 */
-	'currency' => env('SBIPAY_CURRENCY','INR'),
+    // The Aggregator ID Provided by SBI
+    'account_identifier' => env('SBIEPAY_ACCOUNT_IDENTIFIER', ''),
 
-	/**
-	 * indirect url used by SBI to direct the user back to your platform after a transaction is completed
-	 *
-	 * Example: https://localhost.test/sbi-pay/payment/callback
-	 */
-	'indirect_url' => env('SBIPAY_INDIRECT_URL'),
+    /*
+     * The Default Currency
+     *
+     * set the default currency code used for transaction.
+     */
+    'currency' => env('SBIEPAY_CURRENCY', 'INR'),
 
-	/**
-	 * The indirect url path without the domain and scheme
-	 *
-	 * Example: sbi-pay/payment/callback
-	 */
-	'indirect_path' => env('SBIPAY_INDIRECT_PATH'),
+    /*
+     * The Default Country
+     *
+     * set the default currency code used for transaction.
+     */
+    'country' => env('SBIEPAY_COUNTRY', 'IN'),
 
-	/**
-	 * Direct event url used by SBI to send direct messages to your app without the need for users actions
-	 *
-	 * Example: https://localhost.test/sbi-pay/payment/direct-callback
-	 */
-	'direct_url' => env('SBIPAY_DIRECT_URL'),
+    /*
+     * Operating Mode
+     *
+     * set the default Operating Mode used for transaction.
+     */
+    'operating_mode' => env('SBIEPAY_OPERATING_MODE', 'DOM'),
 
-	/**
-	 * The indirect url path without the domain and scheme
-	 *
-	 * Example: sbi-pay/payment/direct-callback
-	 */
-	'direct_path' => env('SBIPAY_DIRECT_PATH'),
+    /*
+     * Success url used by SBI to direct the user back to your platform after a transaction is completed
+     *
+     * Example: https://localhost.test/sbi-e-pay/payment/success
+     */
+    'success_url' => env('SBIEPAY_SUCCESS_URL'),
 
-	/**
-	 * Middleware
-	 */
-	'middleware' => ['web'],
+    /*
+     * The success url path without the domain and scheme
+     *
+     * Example: sbi-e-pay/payment/success
+     */
+    'success_path' => env('SBIEPAY_SUCCESS_PATH'),
 
-	/**
-	 * Urls List
-	 *
-	 * the list of urls for uat and production
-	 *
-	 * each url is used for a specific request, please refer to documentation to learn more about when to use
-	 * each url.
-	 *
-	 */
-	'urls' => [
-		'uat' => [
-			'initiate_payment' => 'https://test.sbiepay.sbi/secure/AggregatorHostedListener',
-			'initiate_refund' => 'https://test.sbiepay.sbi/secure/AggregatorRefundRequest',
-			'auth_enquiry' => 'https://test.sbiepay.sbi/payagg/orderStatusQuery/getOrderStatusQuery',
-		],
-		'production' => [
-			'initiate_payment' => 'https://test.sbiepay.sbi/secure/AggregatorHostedListener',
-			'initiate_refund' => 'https://test.sbiepay.sbi/secure/AggregatorRefundRequest',
-			'auth_enquiry' => 'https://test.sbiepay.sbi/payagg/orderStatusQuery/getOrderStatusQuery',
-		],
-	]
+    /*
+     * Fail url used by SBI to direct the user back to your platform after a transaction is failed
+     *
+     * Example: https://localhost.test/sbi-e-pay/payment/fail
+     */
+    'fail_url' => env('SBIEPAY_FAIL_URL'),
+
+    /*
+     * Fail url path without the domain and scheme
+     *
+     * Example: sbi-e-pay/payment/fail
+     */
+    'fail_path' => env('SBIEPAY_FAIL_PATH'),
+
+    // Middleware
+    'middleware' => ['web'],
+
+    /*
+     * Urls List
+     *
+     * the list of urls for uat and production
+     *
+     * each url is used for a specific request, please refer to documentation to learn more about when to use
+     * each url.
+     *
+     */
+    'urls' => [
+        'uat' => [
+            'initiate_payment'   => 'https://test.sbiepay.sbi/secure/AggregatorHostedListener',
+            'initiate_refund'    => 'https://test.sbiepay.sbi/payagg/bookRefundCancellation/AggStandardEncRefundQueryService',
+            'transaction_status' => 'https://test.sbiepay.sbi/payagg/orderStatusQuery/getOrderStatusQuery',
+        ],
+        'production' => [
+            'initiate_payment'   => 'https://test.sbiepay.sbi/secure/AggregatorHostedListener',
+            'initiate_refund'    => 'https://test.sbiepay.sbi/payagg/bookRefundCancellation/AggStandardEncRefundQueryService',
+            'transaction_status' => 'https://test.sbiepay.sbi/payagg/orderStatusQuery/getOrderStatusQuery',
+        ],
+    ],
 ];

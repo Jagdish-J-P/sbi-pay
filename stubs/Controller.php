@@ -2,31 +2,62 @@
 
 namespace App\Http\Controllers\SBIPay;
 
-use JagdishJP\SBIPay\Http\Requests\AuthorizationConfirmation as Request;
 use App\Http\Controllers\Controller as BaseController;
+use JagdishJP\SBIPay\Http\Requests\PaymentConfirmationRequest as Request;
 
-class Controller extends BaseController {
+class Controller extends BaseController
+{
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function callback(Request $request)
+    {
+        $response = $request->handle();
 
+        // Update your order status
+    }
 
-	/**
-	 * @param Request $request
-	 * @return Response
-	 */
-	public function callback(Request $request) {
-		$response = $request->handle();
+    /**
+     * @param Request $request
+     *
+     * @return string
+     */
+    public function webhook(Request $request)
+    {
+        $response = $request->handle();
 
-		// Update your order status
-	}
+        // Update your order status
 
-	/**
-	 * @param Request $request
-	 * @return string
-	 */
-	public function webhook(Request $request) {
-		$response = $request->handle();
+        return 'OK';
+    }
 
-		// Update your order status
+    /**
+     * @param Request $request
+     *
+     * @return string
+     */
+    public function fail(Request $request)
+    {
+        $response = $request->handle();
 
-		return 'OK';
-	}
+        // Update your order status
+
+        return 'OK';
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return string
+     */
+    public function fail(Request $request)
+    {
+        $response = $request->handle();
+
+        // Update your order status
+
+        return 'OK';
+    }
 }

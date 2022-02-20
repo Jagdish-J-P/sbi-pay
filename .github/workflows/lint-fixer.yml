@@ -1,0 +1,40 @@
+name: "Code-Style Fixer"
+
+on:
+    push:
+        branches: [ main ]
+
+jobs:
+    fix:
+        runs-on: ubuntu-latest
+
+        steps:
+            -   name: Checkout code
+                uses: actions/checkout@v2
+
+            -   name: Checking PHP Syntax
+                uses: TheDragonCode/codestyler@v1.12.4
+                with:
+                    # This token uses GitHub Actions to execute code.
+                    # Required when `fix` is `true`.
+                    # The default value is `${{ secrets.GITHUB_TOKEN }}`.
+                    github_token: ${{ secrets.TOKEN }}
+
+                    # Activates the mode of accepting changes with the creation
+                    # of commits.
+                    fix: true
+
+                    # Activates the actualization of the `.editorconfig` file.
+                    # Works only when the `fix` option is enabled.
+                    # By default, true
+                    editorconfig: true
+
+                    # Activates Dependabot file processing.
+                    # Works only when the `fix` option is enabled.
+                    # By default, true
+                    dependabot: true
+
+                    # Normalizing `composer.json`.
+                    # Works only when the `fix` option is enabled.
+                    # By default, true
+                    normalize: true

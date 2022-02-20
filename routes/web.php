@@ -1,14 +1,16 @@
 <?php
 
-use JagdishJP\SBIPay\Http\Controllers\PaymentController;
+use App\Http\Controllers\SBIPay\Controller;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SBIPay\Controller;
+use JagdishJP\SBIPay\Http\Controllers\PaymentController;
 
-$directPath = Config::get('sbi-pay.direct_path');
-$indirectPath = Config::get('sbi-pay.indirect_path');
+$failPath    = Config::get('sbipay.fail_path');
+$successPath = Config::get('sbipay.success_path');
+$webhookPath = Config::get('sbipay.webhook_path');
 
-Route::view('sbi-pay/initiate/payment','sbi-pay::payment')->name('sbi-pay.initiate.payment');
+Route::view('sbi-pay/initiate/payment', 'SBIPay::payment')->name('sbi-pay.initiate.payment');
 Route::post('payment/sbi-pay/auth', [PaymentController::class, 'handle'])->name('sbi-pay.payment.auth.request');
-Route::post($directPath, [Controller::class, 'webhook'])->name('sbi-pay.payment.direct.callback');
-Route::post($indirectPath, [Controller::class, 'callback'])->name('sbi-pay.payment.indirect.callback');
+Route::post($webhookPath, [Controller::class, 'webhook'])->name('sbi-pay.payment.webhook');
+Route::post($successPath, [Controller::class, 'success'])->name('sbi-pay.payment.success.callback');
+Route::post($failPath, [Controller::class, 'fail'])->name('sbi-pay.payment.fail.callback');
