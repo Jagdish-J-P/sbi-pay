@@ -49,6 +49,9 @@ class Controller extends BaseController
 
     /**
      * @param Request $request
+     * @param mixed $order_no
+     * @param mixed $amount
+     * @param mixed $remark
      *
      * @return string
      */
