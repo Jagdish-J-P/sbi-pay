@@ -9,28 +9,27 @@ class Controller extends BaseController
 {
     /**
      * @param Request $request
+     * @param mixed $order_no
+     * @param mixed $amount
+     * @param mixed $remark
      *
-     * @return Response
+     * @return string
      */
-    public function callback(Request $request)
+    public function initiate(Request $request, $order_no = null, $amount = null, $remark = null)
     {
-        $response = $request->handle();
-
-        // Update your order status
+        return view('SBIPay::payment', compact(['order_no', 'amount', 'remark']));
     }
 
     /**
      * @param Request $request
      *
-     * @return string
+     * @return Response
      */
-    public function webhook(Request $request)
+    public function success(Request $request)
     {
         $response = $request->handle();
 
         // Update your order status
-
-        return 'OK';
     }
 
     /**
@@ -49,14 +48,15 @@ class Controller extends BaseController
 
     /**
      * @param Request $request
-     * @param mixed $order_no
-     * @param mixed $amount
-     * @param mixed $remark
      *
      * @return string
      */
-    public function initiate(Request $request, $order_no, $amount, $remark)
+    public function webhook(Request $request)
     {
-        return view('SBIPay::payment', compact(['order_no', 'amount', 'remark']));
+        $response = $request->handle();
+
+        // Update your order status
+
+        return 'OK';
     }
 }

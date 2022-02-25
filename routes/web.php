@@ -9,7 +9,7 @@ $failPath    = Config::get('sbipay.fail_path');
 $successPath = Config::get('sbipay.success_path');
 $webhookPath = Config::get('sbipay.webhook_path');
 
-Route::get('sbi-pay/initiate/payment/{order_no}/{amount}/{remark}', function ($order_no, $amount, $remark) {
+Route::get('sbi-pay/initiate/payment/{order_no?}/{amount?}/{remark?}', function ($order_no = null, $amount = null, $remark = null) {
     return view('SBIPay::payment', compact(['order_no', 'amount', 'remark']));
 })->name('sbi-pay.initiate.payment');
 

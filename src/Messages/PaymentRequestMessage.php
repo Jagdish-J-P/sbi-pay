@@ -17,7 +17,7 @@ class PaymentRequestMessage extends Message implements Contract
     public function __construct()
     {
         parent::__construct();
-        $this->init();
+        //$this->init();
 
         $this->url = ! app()->isLocal()
             ? Config::get('sbipay.urls.production.initiate_payment')
