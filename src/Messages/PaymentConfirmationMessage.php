@@ -12,7 +12,7 @@ class PaymentConfirmationMessage extends Message implements Contract
     public const STATUS_FAIL = 'FAIL';
 
     public const STATUS_PENDING = 'PENDING';
-    
+
     /**
      * handle a message.
      *

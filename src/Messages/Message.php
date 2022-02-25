@@ -100,7 +100,7 @@ class Message
         $this->accessMedium             = 'ONLINE';
         $this->transactionSource        = 'ONLINE';
         $this->multiAccountDetails      = [];
-        
+
         $this->init();
     }
 }
