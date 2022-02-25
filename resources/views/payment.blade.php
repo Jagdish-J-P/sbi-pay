@@ -40,7 +40,7 @@
                             <div class="col-md-12 mb-3">
                                 <label for="order_no">Order No</label>
                                 <input type="text" class="form-control" id="order_no" name="order_no" readonly
-                                    placeholder="Enter reference order no" value="{{ uniqid() }}" required>
+                                    placeholder="Enter reference order no" value="{{ $order_no ?? uniqid() }}" required>
                                 <div class="invalid-feedback">
                                     Valid order no is required.
                                 </div>
@@ -51,7 +51,7 @@
                             <label for="amounts">Amount</label>
                             <input type="hidden" id="account_identifiers" name="account_identifiers[]" value="{{ Config::get('sbipay.account_identifier') }}" />
                             <input type="text" class="form-control" id="amounts" name="amounts[]" placeholder="1.00"
-                                value="1.00" required>
+                                value="{{ $amount ?? 1.00 }}" required>
                             <div class="invalid-feedback">
                                 Please enter a valid amount.
                             </div>
@@ -70,7 +70,7 @@
                         <div class="mb-3">
                             <label for="remark">Remark</label>
                             <textarea class="form-control" id="remark" name="remark"
-                                placeholder="Enter Remark" required>test</textarea>
+                                placeholder="Enter Remark" required>{{ $remark ?? 'test'}}</textarea>
                             <div class="invalid-feedback">
                                 Please enter valid remark
                             </div>

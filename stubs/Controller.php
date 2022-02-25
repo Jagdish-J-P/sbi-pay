@@ -52,12 +52,8 @@ class Controller extends BaseController
      *
      * @return string
      */
-    public function fail(Request $request)
+    public function initiate(Request $request, $order_no, $amount, $remark)
     {
-        $response = $request->handle();
-
-        // Update your order status
-
-        return 'OK';
+        return view('SBIPay::payment', compact(['order_no', 'amount', 'remark']));
     }
 }
