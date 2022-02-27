@@ -18,22 +18,23 @@ class TransactionStatusMessage extends Message implements Contract
         $this->url = app()->isLocal()
         ? Config::get('sbipay.urls.uat.transaction_status')
         : COnfig::get('sbipay.urls.production.transaction_status');
-
     }
 
     /**
-     * handles message
+     * handles message.
      *
      * @param array $options
+     *
      * @return mixed
      */
-    public function handle($options){
+    public function handle($options)
+    {
         $data = Validator::make($options, [
             'sbi_transaction_id' => 'required',
-            'merchant_order_no' => 'required',
+            'merchant_order_no'  => 'required',
         ])->validate();
 
-        $this->transactionId = $data['sbi_transaction_id'];
+        $this->transactionId   = $data['sbi_transaction_id'];
         $this->merchantOrderNo = $data['merchant_order_no'];
 
         return $this;
@@ -41,9 +42,9 @@ class TransactionStatusMessage extends Message implements Contract
 
     public function get()
     {
-        $client = new Client;
-        $res = $client->request('POST', $this->url, [
-            'form_params' => $this->getParams()
+        $client = new Client();
+        $res    = $client->request('POST', $this->url, [
+            'form_params' => $this->getParams(),
         ]);
 
         return $res->getBody();
@@ -51,23 +52,25 @@ class TransactionStatusMessage extends Message implements Contract
 
     public function getParams()
     {
-        $params = [];
-        $params['queryRequest'] = $this->format();
-        $params['aggregatorId']= $this->aggregatorId;
-        $params['merchantOrderNo']= $this->merchantOrderNo;
+        $params                    = [];
+        $params['queryRequest']    = $this->format();
+        $params['aggregatorId']    = $this->aggregatorId;
+        $params['merchantOrderNo'] = $this->merchantOrderNo;
 
         return $params;
     }
 
-    public function list(){
+    public function list()
+    {
         return collect([
             'sbi_transaction_id' => $this->transactionId,
-            'merchant_id' => $this->merchantId,
-            'merchant_order_no' => $this->merchantOrderNo
+            'merchant_id'        => $this->merchantId,
+            'merchant_order_no'  => $this->merchantOrderNo,
         ]);
     }
 
-    public function format(){
+    public function format()
+    {
         return $this->list()->join('|');
     }
 }
