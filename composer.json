@@ -46,7 +46,10 @@
 		"laravel": {
 			"providers": [
 				"JagdishJP\\SBIPay\\SBIPayServiceProvider"
-			]
+			],
+            "aliases": {
+                "SBIPay": "JagdishJP\\SBIPay\\Facades\\SBIPay"
+            }
 		}
 	},
 	"scripts": {

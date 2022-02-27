@@ -7,10 +7,10 @@ class Response
     /** constant to name response parameters */
     public const RESPONSE_PARAMETERS = [
         // Merchant Reference Order no
-        'merchantOrderNo',
+        'merchant_order_no',
 
         // SBI Transactin ID
-        'SBIePayRefID',
+        'sbi_transaction_id',
 
         // Transaction status [SUCCESS, FAIL, PENDING]
         'transaction_status',
@@ -22,22 +22,22 @@ class Response
         'currency',
 
         // Payment Mode [IMPS, NB, CC, DC]
-        'payMode',
+        'pay_mode',
 
         // Extra details sent while initiating transaction
-        'otherDetails',
+        'extra_details',
 
         // Reason for transaction failure
         'reason',
 
         // Bank code
-        'bankCode',
+        'bank_code',
 
         // Bank reference number
-        'bankReferenceNumber',
+        'bank_reference_number',
 
         // Transaction date (Format: Y-m-d H:i:s)
-        'transactionDate',
+        'transaction_date',
 
         // Country code
         'country',
@@ -56,10 +56,10 @@ class Response
         'CIN',
 
         // Merchant Id
-        'merchantId',
+        'merchant_id',
 
         // Trahsaciton Fees charged by bank including GST
-        'totalFees',
+        'total_fees',
 
         // Reserve fields for future purpose [ref1 - ref9]
         'ref1',

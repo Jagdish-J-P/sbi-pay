@@ -29,6 +29,10 @@ class SBIPayServiceProvider extends ServiceProvider
     {
         // Automatically apply the package configuration
         $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'sbipay');
+
+        $this->app->bind('sbi-pay', function(){
+            return new SBIPay();
+        });
     }
 
     public function configureRoutes()
