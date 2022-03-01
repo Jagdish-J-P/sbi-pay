@@ -49,12 +49,12 @@ class TransactionStatusMessage extends Message implements Contract
         ]);
 
         $response = explode('|', $res->getBody());
-        
+
         foreach ($response as $key => $value) {
             $response[Response::RESPONSE_PARAMETERS_STATUS[$key]] = $value;
             unset($response[$key]);
         }
-        
+
         return $response;
     }
 
@@ -63,7 +63,7 @@ class TransactionStatusMessage extends Message implements Contract
         $params                    = [];
         $params['queryRequest']    = $this->format();
         $params['aggregatorId']    = $this->aggregatorId;
-        $params['merchantId'] = $this->merchantId;
+        $params['merchantId']      = $this->merchantId;
 
         return $params;
     }
