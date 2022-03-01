@@ -2,7 +2,7 @@
 
 namespace JagdishJP\SBIPay\Tests\Feature;
 
-use JagdishJP\SBIPay\Tests\TestCase;
+use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
