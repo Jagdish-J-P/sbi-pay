@@ -23,7 +23,6 @@
 	"require": {
 		"php": "^7.3 || ^8.0",
 		"illuminate/support": "^8.0",
-		"laravel/framework": "^8.80",
 		"laravelcollective/html": "^6.2"
 	},
 	"require-dev": {
