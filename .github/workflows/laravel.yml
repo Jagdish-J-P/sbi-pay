@@ -50,14 +50,15 @@ jobs:
           tools: composer:v2
           coverage: none
       
-      - name: Change Directory
-        run: cd ..
-
       - name: Install dependencies
         run: |
-          composer require "laravel/framework=${{ matrix.laravel }}" "orchestra/testbench=${{ matrix.testbench }}" --no-update
+          composer create-project laravel/laravel="5.1.*" sbi-pay-demo
           composer update --prefer-dist --no-interaction --no-progress
        
+      
+      - name: Change Directory
+        run: cd sbi-pay-demo
+      
       - name: List Directory
         run: ls
       
