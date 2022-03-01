@@ -11,7 +11,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     strategy:
       fail-fast: false
       matrix:
@@ -49,24 +49,11 @@ jobs:
           extensions: dom, curl, libxml, mbstring, zip
           tools: composer:v2
           coverage: none
-      
+
       - name: Install dependencies
         run: |
-          composer create-project laravel/laravel="5.1.*" sbi-pay-demo
+          composer require "laravel/framework=${{ matrix.laravel }}" "orchestra/testbench=${{ matrix.testbench }}" --no-update
           composer update --prefer-dist --no-interaction --no-progress
-       
-      
-      - name: Change Directory
-        run: cd sbi-pay-demo
-      
-      - name: List Directory
-        run: ls
-      
-      - name: Parent Directory
-        run: pwd
 
-      - name: Require Package
-        run: php sbi-pay-demo/artisan key:generate
-      
       - name: Run tests
         run: vendor/bin/phpunit --verbose
