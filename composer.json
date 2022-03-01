@@ -21,16 +21,16 @@
 	],
 	"homepage": "https://github.com/jagdish-j-p/sbi-pay",
 	"require": {
-        "php": "^7.3|^8.0",
-        "ext-json": "*",
-        "laravel/framework": "^6.0|^7.0|^8.0|^9.0"
-    },
-    "require-dev": {
-        "laravel/legacy-factories": "^1.0",
-        "mockery/mockery": "^1.4",
-        "orchestra/testbench": "^4.0|^5.0|^6.0|^7.0",
-        "phpunit/phpunit": "^9.0"
-    },
+		"php": "^7.3 || ^8.0",
+		"ext-json": "*",
+		"laravel/framework": "^6.0 || ^7.0 || ^8.0 || ^9.0"
+	},
+	"require-dev": {
+		"laravel/legacy-factories": "^1.0",
+		"mockery/mockery": "^1.4",
+		"orchestra/testbench": "^4.0 || ^5.0 || ^6.0 || ^7.0",
+		"phpunit/phpunit": "^9.0"
+	},
 	"autoload": {
 		"psr-4": {
 			"JagdishJP\\SBIPay\\Tests\\": "tests",
