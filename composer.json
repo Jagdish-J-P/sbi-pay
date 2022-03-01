@@ -23,7 +23,7 @@
 	"require": {
 		"php": "^7.3 || ^8.0",
 		"illuminate/support": "^8.0",
-		"laravelcollective/html": "^5.1"
+		"laravelcollective/html": "^6.2"
 	},
 	"require-dev": {
 		"orchestra/testbench": "^6.0",
