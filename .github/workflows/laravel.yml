@@ -64,9 +64,6 @@ jobs:
       
       - name: Parent Directory
         run: pwd
-
-      - name: Generate Key
-        run: php artisan key:generate
       
       - name: Run tests
         run: vendor/bin/phpunit --verbose
