@@ -1,10 +1,4 @@
 version: 2
-registries:
-  github-octocat:
-    type: git
-    url: https://github.com
-    username: x-access-token
-    password: ${{secrets.TOKEN}}
 updates:
     -
         package-ecosystem: github-actions
