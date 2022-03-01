@@ -13,9 +13,7 @@ class ExampleTest extends TestCase
      */
     public function testTheApplicationReturnsASuccessfulResponse()
     {
-        $this->withoutMiddleware();
-
-        $response = $this->get('/');
+        $response = $this->get('/sbi-pay/initiate/payment/123123/1/test');
 
         $response->assertStatus(200);
     }
