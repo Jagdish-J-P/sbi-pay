@@ -13,6 +13,8 @@ class ExampleTest extends TestCase
      */
     public function testTheApplicationReturnsASuccessfulResponse()
     {
+        $this->withoutMiddleware();
+        
         $response = $this->get('/');
 
         $response->assertStatus(200);
