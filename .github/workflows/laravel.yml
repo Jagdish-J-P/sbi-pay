@@ -51,7 +51,7 @@ jobs:
           coverage: none
       
       - name: Change Directory
-        run: cd..
+        run: cd ..
 
       - name: Install dependencies
         run: |
