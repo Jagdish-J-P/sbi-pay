@@ -16,7 +16,7 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            \Jagdishjp\Testpackage\TestpackageServiceProvider::class,
+            \JagdishJP\SBIPay\SBIPayServiceProvider::class,
         ];
     }
 
