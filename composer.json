@@ -36,8 +36,7 @@
 	},
 	"autoload-dev": {
 		"classmap": [
-			"tests",
-			"database/"
+			"tests"
 		],
 		"psr-4": {
 			"JagdishJP\\SBIPay\\Tests\\": "tests"
