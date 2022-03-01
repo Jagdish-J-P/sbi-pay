@@ -14,7 +14,7 @@ class ExampleTest extends TestCase
      */
     public function testTheApplicationReturnsASuccessfulResponse()
     {
-        Artisan::command('key:generate');
+        Artisan::call('key:generate', []);
         $response = $this->get('/sbi-pay/initiate/payment/123123/1/test');
 
         $response->assertStatus(200);
