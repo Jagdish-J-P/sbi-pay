@@ -50,7 +50,10 @@ jobs:
             
             -   name: Install dependencies
                 run: composer require --dev laravel/framework:^${{ matrix.laravel }}
-            
+
+            -   name: List Directory
+                run: ls
+
             -   name: Generate key
                 run: php artisan key:generate
             
@@ -61,9 +64,6 @@ jobs:
                 run: |
                     mkdir -p database
                     touch database/database.sqlite
-                
-            -   name: List Directory
-                run: ls
 
             -   name: Execute tests
                 run: sudo vendor/bin/phpunit
