@@ -10,7 +10,7 @@ jobs:
             fail-fast: true
             matrix:
                 php: [ "8.0", "8.1" ]
-                laravel: [ "9.0" ]
+                laravel: [ "8.0" ]
                 psql: [ "14" ]
 
         name: php ${{ matrix.php }}, pg ${{ matrix.psql }}
