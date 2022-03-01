@@ -3,7 +3,6 @@
 namespace JagdishJP\SBIPay\Tests\Feature;
 
 use JagdishJP\SBIPay\Tests\TestCase;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class ExampleTest extends TestCase
 {
@@ -15,7 +14,7 @@ class ExampleTest extends TestCase
     public function testTheApplicationReturnsASuccessfulResponse()
     {
         $this->withoutMiddleware();
-        
+
         $response = $this->get('/');
 
         $response->assertStatus(200);
