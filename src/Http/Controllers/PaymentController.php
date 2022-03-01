@@ -24,7 +24,8 @@ class PaymentController extends Controller
         ]);
     }
 
-    public function getTransactionStatus($sbi_transaction_id, $merchant_order_no){
+    public function getTransactionStatus($sbi_transaction_id, $merchant_order_no)
+    {
         return SBIPay::transactionStatus($sbi_transaction_id, $merchant_order_no);
     }
 }
