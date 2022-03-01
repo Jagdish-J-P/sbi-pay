@@ -47,6 +47,11 @@ jobs:
 
             -   name: Install dependencies
                 run: composer require --dev laravel/framework:^${{ matrix.laravel }}
+                with:
+                    # This token uses GitHub Actions to execute code.
+                    # Required when `fix` is `true`.
+                    # The default value is `${{ secrets.GITHUB_TOKEN }}`.
+                    github_token: ${{ secrets.TOKEN }}
 
             -   name: Execute tests
                 run: sudo vendor/bin/phpunit
