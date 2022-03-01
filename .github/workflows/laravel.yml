@@ -66,7 +66,7 @@ jobs:
         run: pwd
 
       - name: Require Package
-        run: php sbi-pay-demo\artisan key:generate
+        run: php sbi-pay-demo/artisan key:generate
       
       - name: Run tests
         run: vendor/bin/phpunit --verbose
