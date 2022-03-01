@@ -5,6 +5,7 @@ namespace JagdishJP\SBIPay\Messages;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Validator;
+use JagdishJP\SBIPay\Constant\Response;
 use JagdishJP\SBIPay\Contracts\Message as Contract;
 
 class TransactionStatusMessage extends Message implements Contract
@@ -47,7 +48,14 @@ class TransactionStatusMessage extends Message implements Contract
             'form_params' => $this->getParams(),
         ]);
 
-        return $res->getBody();
+        $response = explode('|', $res->getBody());
+        
+        foreach ($response as $key => $value) {
+            $response[Response::RESPONSE_PARAMETERS_STATUS[$key]] = $value;
+            unset($response[$key]);
+        }
+        
+        return $response;
     }
 
     public function getParams()
@@ -55,7 +63,7 @@ class TransactionStatusMessage extends Message implements Contract
         $params                    = [];
         $params['queryRequest']    = $this->format();
         $params['aggregatorId']    = $this->aggregatorId;
-        $params['merchantOrderNo'] = $this->merchantOrderNo;
+        $params['merchantId'] = $this->merchantId;
 
         return $params;
     }
