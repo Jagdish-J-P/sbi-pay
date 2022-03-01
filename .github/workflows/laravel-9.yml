@@ -53,3 +53,4 @@ jobs:
                 env:
                     MYSQL_HOST: 127.0.0.1
                     PGSQL_HOST: 127.0.0.1
+                    APP_URL: http://localhost
