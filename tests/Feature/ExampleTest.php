@@ -2,8 +2,8 @@
 
 namespace JagdishJP\SBIPay\Tests\Feature;
 
-use JagdishJP\SBIPay\Tests\TestCase;
 use Artisan;
+use JagdishJP\SBIPay\Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
