@@ -3,6 +3,7 @@
 namespace JagdishJP\SBIPay\Tests\Feature;
 
 use JagdishJP\SBIPay\Tests\TestCase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class ExampleTest extends TestCase
 {
