@@ -22,8 +22,8 @@
 	"homepage": "https://github.com/jagdish-j-p/sbi-pay",
 	"require": {
 		"php": "^7.3 || ^8.0",
-        "laravel/framework": "^8.80",
 		"illuminate/support": "^8.0",
+		"laravel/framework": "^8.80",
 		"laravelcollective/html": "^6.2"
 	},
 	"require-dev": {
