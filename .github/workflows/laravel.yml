@@ -50,11 +50,8 @@ jobs:
           tools: composer:v2
           coverage: none
       
-      - name: Make directory
-        run: mkdir sbi-pay-demo
-      
       - name: Change Directory
-        run: cd sbi-pay-demo
+        run: cd..
 
       - name: Install dependencies
         run: |
