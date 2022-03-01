@@ -35,12 +35,12 @@
 		}
 	},
 	"autoload-dev": {
-		"classmap": [
-			"tests"
-		],
 		"psr-4": {
 			"JagdishJP\\SBIPay\\Tests\\": "tests"
-		}
+		},
+		"classmap": [
+			"tests"
+		]
 	},
 	"config": {
 		"sort-packages": true
