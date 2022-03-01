@@ -89,16 +89,16 @@ class Response
 
         // Currency code
         'currency',
-        
+
         // Extra details sent while initiating transaction
         'extra_details',
 
         // Merchant Reference Order no
         'merchant_order_no',
-        
+
         // Transaction Amount
         'amount',
-        
+
         // Reason for transaction failure
         'reason',
 
