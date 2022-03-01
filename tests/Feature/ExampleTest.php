@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Feature;
+namespace JagdishJP\SBIPay\Tests\Feature;
 
-use Tests\TestCase;
+use JagdishJP\SBIPay\Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
