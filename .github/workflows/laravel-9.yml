@@ -48,9 +48,11 @@ jobs:
             -   name: Install dependencies
                 run: composer require --dev laravel/framework:^${{ matrix.laravel }}
 
+            -   name: List Directory
+                run: ls
+
             -   name: Execute tests
                 run: sudo vendor/bin/phpunit
                 env:
                     MYSQL_HOST: 127.0.0.1
                     PGSQL_HOST: 127.0.0.1
-                    APP_URL: http://localhost
