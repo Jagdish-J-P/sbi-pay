@@ -15,7 +15,7 @@ class ExampleTest extends TestCase
     public function testTheApplicationReturnsASuccessfulResponse()
     {
         //Artisan::call('route:list', []);
-        $response = $this->get(route('sbi-pay.payment.initiate', [123123,1,'test']));
+        $response = $this->get(route('sbi-pay.payment.initiate', [123123, 1, 'test']));
         dd($response);
         $response = $this->get('/');
 
