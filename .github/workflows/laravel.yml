@@ -50,6 +50,9 @@ jobs:
           tools: composer:v2
           coverage: none
 
+      - name: Copy .env
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+    
       - name: Install dependencies
         run: |
           composer require "laravel/framework=${{ matrix.laravel }}" "orchestra/testbench=${{ matrix.testbench }}" --no-update
