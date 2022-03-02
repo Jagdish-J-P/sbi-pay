@@ -3,7 +3,7 @@
 namespace JagdishJP\SBIPay\Tests\Feature;
 
 use Artisan;
-use JagdishJP\SBIPay\Tests\TestCase;
+use Orchestra\Testbench\TestCase;
 
 class ExampleTest extends TestCase
 {
