@@ -2,7 +2,7 @@
 
 namespace JagdishJP\SBIPay\Tests\Feature;
 
-use Artisan;
+//use Artisan;
 use Orchestra\Testbench\TestCase;
 
 class ExampleTest extends TestCase
@@ -14,7 +14,7 @@ class ExampleTest extends TestCase
      */
     public function testTheApplicationReturnsASuccessfulResponse()
     {
-        Artisan::call('key:generate', []);
+        //Artisan::call('key:generate', []);
         $response = $this->get('/sbi-pay/initiate/payment/123123/1/test');
 
         $response->assertStatus(200);
