@@ -1,9 +1,9 @@
 <?php
 
-use JagdishJP\SBIPay\Http\Controllers\SBIPay\Controller;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
 use JagdishJP\SBIPay\Http\Controllers\PaymentController;
+use JagdishJP\SBIPay\Http\Controllers\SBIPay\Controller;
 
 $failPath    = Config::get('sbipay.fail_path');
 $successPath = Config::get('sbipay.success_path');

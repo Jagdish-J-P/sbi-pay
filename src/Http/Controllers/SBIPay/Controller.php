@@ -2,7 +2,7 @@
 
 namespace JagdishJP\SBIPay\Http\Controllers\SBIPay;
 
-#use App\Http\Controllers\Controller as BaseController;
+//use App\Http\Controllers\Controller as BaseController;
 use Illuminate\Routing\Controller  as BaseController;
 use JagdishJP\SBIPay\Http\Requests\PaymentConfirmationRequest as Request;
 
