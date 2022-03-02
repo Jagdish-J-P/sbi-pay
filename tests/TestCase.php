@@ -29,5 +29,9 @@ class TestCase extends Orchestra
      */
     protected function getEnvironmentSetUp($app)
     {
+         // make sure, our .env file is loaded
+         $app->useEnvironmentPath(__DIR__.'/..');
+         $app->bootstrapWith([LoadEnvironmentVariables::class]);
+         parent::getEnvironmentSetUp($app);
     }
 }
