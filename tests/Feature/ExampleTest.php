@@ -2,8 +2,8 @@
 
 namespace JagdishJP\SBIPay\Tests\Feature;
 
-//use Artisan;
-use Orchestra\Testbench\TestCase;
+use Artisan;
+use JagdishJP\SBIPay\Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
@@ -14,8 +14,9 @@ class ExampleTest extends TestCase
      */
     public function testTheApplicationReturnsASuccessfulResponse()
     {
-        //Artisan::call('key:generate', []);
-        //$response = $this->get('/sbi-pay/sbi-pay/initiate/payment/123123/1/test');
+        //Artisan::call('route:list', []);
+        $response = $this->get(route('sbi-pay.payment.initiate', [123123,1,'test']));
+       // dd(route('sbi-pay.payment.initiate', [123123,1,'test']));
         $response = $this->get('/');
 
         $response->assertStatus(200);

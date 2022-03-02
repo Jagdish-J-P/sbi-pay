@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\SBIPay\Controller;
+use JagdishJP\SBIPay\Http\Controllers\SBIPay\Controller;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
 use JagdishJP\SBIPay\Http\Controllers\PaymentController;
