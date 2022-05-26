@@ -28,6 +28,7 @@ class Controller extends BaseController
      */
     public function success(Request $request)
     {
+        dd(ts'test');
         $response = $request->handle();
 
         // Update your order status
