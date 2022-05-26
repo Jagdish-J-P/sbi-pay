@@ -49,7 +49,7 @@
 
                         <div class="mb-3">
                             <label for="amounts">Amount</label>
-                            <input type="hidden" id="account_identifiers" name="account_identifiers[]" value="{{ Config::get('sbipay.account_identifier') }}" />
+                            <input type="hidden" id="account_identifiers" name="account_identifiers[]" value="{{ config('sbipay.account_identifier') }}" />
                             <input type="text" class="form-control" id="amounts" name="amounts[]" placeholder="1.00"
                                 value="{{ $amount ?? 1.00 }}" required>
                             <div class="invalid-feedback">
@@ -59,7 +59,7 @@
 
                         {{-- <div class="mb-3">
                             <label for="amounts">Amount</label>
-                            <input type="hidden" id="account_identifiers" name="account_identifiers[]" value="{{ Config::get('sbipay.account_identifier') }}" />
+                            <input type="hidden" id="account_identifiers" name="account_identifiers[]" value="{{ config('sbipay.account_identifier') }}" />
                             <input type="text" class="form-control" id="amounts" name="amounts[]" placeholder="1.50"
                                 value="1.50" required>
                             <div class="invalid-feedback">
