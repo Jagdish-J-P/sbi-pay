@@ -49,7 +49,7 @@ class SBIPayServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../config/config.php' => config_path('sbipay.php'),
-            ], 'config');
+            ], 'sbi-pay-config');
 
             $this->publishes([
                 __DIR__ . '/../stubs/Controller.php' => app_path('Http/Controllers/SBIPay/Controller.php'),

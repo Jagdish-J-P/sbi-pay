@@ -40,13 +40,6 @@ return [
     'operating_mode' => env('SBIEPAY_OPERATING_MODE', 'DOM'),
 
     /*
-     * Success url used by SBI to direct the user back to your platform after a transaction is completed
-     *
-     * Example: https://localhost.test/sbi-e-pay/payment/success
-     */
-    'success_url' => env('SBIEPAY_SUCCESS_URL'),
-
-    /*
      * The success url path without the domain and scheme
      *
      * Example: sbi-e-pay/payment/success
@@ -54,11 +47,11 @@ return [
     'success_path' => env('SBIEPAY_SUCCESS_PATH'),
 
     /*
-     * Fail url used by SBI to direct the user back to your platform after a transaction is failed
+     * Success url used by SBI to direct the user back to your platform after a transaction is completed
      *
-     * Example: https://localhost.test/sbi-e-pay/payment/fail
+     * Example: https://localhost.test/sbi-e-pay/payment/success
      */
-    'fail_url' => env('SBIEPAY_FAIL_URL'),
+    'success_url' => env('SBIEPAY_SUCCESS_URL', env('APP_URL') . '/' . env('SBIEPAY_SUCCESS_PATH')),
 
     /*
      * Fail url path without the domain and scheme
@@ -66,6 +59,27 @@ return [
      * Example: sbi-e-pay/payment/fail
      */
     'fail_path' => env('SBIEPAY_FAIL_PATH'),
+
+    /*
+     * Fail url used by SBI to direct the user back to your platform after a transaction is failed
+     *
+     * Example: https://localhost.test/sbi-e-pay/payment/fail
+     */
+    'fail_url' => env('SBIEPAY_FAIL_URL', env('APP_URL') . '/' . env('SBIEPAY_FAIL_PATH')),
+
+    /*
+     * Webhook path without the domain and scheme
+     *
+     * Example: sbi-e-pay/payment/fail
+     */
+    'webhook_path' => env('SBIEPAY_WEBHOOK_PATH'),
+
+    /*
+     * Webhook url used by SBI to make server-to-server communication to update status
+     *
+     * Example: https://localhost.test/sbi-e-pay/payment/webhook
+     */
+    'webhook_url' => env('SBIEPAY_WEBHOOK_URL', env('APP_URL') . '/' . env('SBIEPAY_WEBHOOK_PATH')),
 
     // Middleware
     'middleware' => ['web'],
