@@ -15,7 +15,7 @@ Route::get('sbi-pay/initiate/payment/{order_no?}/{amount?}/{remark?}', function 
 
 Route::get('payment/initiate/sbi-pay/{order_no}/{amount}/{remark}', [Controller::class, 'initiate'])->name('sbi-pay.payment.initiate');
 
-Route::post('sbi-pay/transaction/status/{sbi_transaction_id}/{merchant_order_no}', [PaymentController::class, 'getTransactionStatus'])->name('sbi-pay.transaction.status.request');
+Route::get('sbi-pay/transaction/status/{sbi_transaction_id}/{merchant_order_no}', [PaymentController::class, 'getTransactionStatus'])->name('sbi-pay.transaction.status.request');
 Route::post('sbi-pay/payment/auth', [PaymentController::class, 'handle'])->name('sbi-pay.payment.auth.request');
 Route::any($successPath, [Controller::class, 'success'])->name('sbi-pay.payment.success.callback');
 Route::post($failPath, [Controller::class, 'fail'])->name('sbi-pay.payment.fail.callback');

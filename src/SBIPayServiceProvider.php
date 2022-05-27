@@ -5,6 +5,7 @@ namespace JagdishJP\SBIPay;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use JagdishJP\SBIPay\Console\Commands\SbiPayPublish;
 
 class SBIPayServiceProvider extends ServiceProvider
 {
@@ -33,6 +34,10 @@ class SBIPayServiceProvider extends ServiceProvider
         $this->app->bind('sbi-pay', function () {
             return new SBIPay();
         });
+
+        $this->commands(
+            SbiPayPublish::class
+        );
     }
 
     public function configureRoutes()
