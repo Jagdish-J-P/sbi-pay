@@ -2,7 +2,9 @@
 
 This package provides laravel implementations for SBI Payment Gateway services.
 
-Please Note that this package is still under development.
+## Important Notes
+1. This package is still under development.
+2. Your Production / Stagging server ip and domain must be whitelisted by SBI to start integration. Otherwise their Test URL will not be accessible.
 
 ## Installation
 
