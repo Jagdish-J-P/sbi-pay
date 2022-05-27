@@ -49,8 +49,22 @@ You can override the defaults by updating the config file.
 
 ## Usage
 
-1. You can visit <a href='https://app.test/sbi-pay/initiate/payment'>https://app.test/sbi-pay/initiate/payment</a> for the payment flow demo of web integration.
+1. You can visit <a href='https://app.test/sbi-pay/initiate/payment'>https://app.test/sbi-pay/initiate/payment</a> for the payment flow demo of web integration. You can override below function defined in `app/Http/Controllers/SBIPay/Controller.php` as per your requirement.
 
+```php
+    /**
+     * @param Request $request
+     * @param mixed $order_no
+     * @param mixed $amount
+     * @param mixed $remark
+     *
+     * @return string
+     */
+    public function initiate(Request $request, $order_no = null, $amount = null, $remark = null)
+    {
+        return view('SBIPay::payment', compact(['order_no', 'amount', 'remark']));
+    }
+```
 You can also override `payment.blade.php` with your custom design to integrate with your layout. but do not change `name` attribute of html controls and `action` URL of form.
 
 
