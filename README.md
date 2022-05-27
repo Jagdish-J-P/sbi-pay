@@ -47,7 +47,7 @@ You can override the defaults by updating the config file.
 
 ## Usage
 
-1. You can visit <a href='http://app.test/sbi-pay/initiate/payment'>http://app.test/sbi-pay/initiate/payment</a> for the payment flow demo of web integration.
+1. You can visit <a href='https://app.test/sbi-pay/initiate/payment'>https://app.test/sbi-pay/initiate/payment</a> for the payment flow demo of web integration.
 
 You can also override `payment.blade.php` with your custom design to integrate with your layout. but do not change `name` attribute of html controls and `action` URL of form.
 
@@ -99,6 +99,13 @@ You can also override `payment.blade.php` with your custom design to integrate w
         return 'OK';
     }
 ```
+
+3. View Transaction Status
+
+```
+https://app.test/sbi-pay/transaction/status/$sbi_transaction_id/$merchant_order_no
+```
+
 
 ### Changelog
 
