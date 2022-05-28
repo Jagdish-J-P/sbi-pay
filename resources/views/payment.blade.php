@@ -8,9 +8,8 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
-        integrity="undefined" crossorigin="anonymous">
-    <link href="{{ asset('assets/SBI/css/form-validation.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" integrity="undefined" crossorigin="anonymous">
+    <link href="{{ asset('assets/SBIPay/css/form-validation.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -30,7 +29,7 @@
             @endif
 
             <div class="row">
-                <div class="col-md-8 order-md-1">
+                <div class="col-md-12 order-md-1">
                     <div class="border p-3 mb-3 rounded">
                         <h4 class="mb-3">
                             <img src="{{ asset('assets/SBIPay/Images/sbiepay.png') }}" height="30px" style="background: #000066;" class="p-1" />
@@ -39,54 +38,56 @@
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <label for="order_no">Order No</label>
-                                <input type="text" class="form-control" id="order_no" name="order_no" readonly
-                                    placeholder="Enter reference order no" value="{{ $order_no ?? uniqid() }}" required>
+                                <input type="text" class="form-control" id="order_no" name="order_no" readonly placeholder="Enter reference order no" value="{{ $order_no ?? uniqid() }}" required>
                                 <div class="invalid-feedback">
                                     Valid order no is required.
                                 </div>
                             </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="amounts">Amount</label>
-                            <input type="hidden" id="account_identifiers" name="account_identifiers[]" value="{{ config('sbipay.account_identifier') }}" />
-                            <input type="text" class="form-control" id="amounts" name="amounts[]" placeholder="1.00"
-                                value="{{ $amount ?? 1.00 }}" required>
-                            <div class="invalid-feedback">
-                                Please enter a valid amount.
+                        <div class="row">
+                            <div class="mb-3">
+                                <label for="amounts">Amount</label>
+                                <input type="hidden" id="account_identifiers" name="account_identifiers[]" value="{{ config('sbipay.account_identifier') }}" />
+                                <input type="text" class="form-control" id="amounts" name="amounts[]" placeholder="1.00" value="{{ $amount ?? '' }}" required>
+                                <div class="invalid-feedback">
+                                    Please enter a valid amount.
+                                </div>
                             </div>
                         </div>
 
-                        {{-- <div class="mb-3">
+                        {{--
+                        You can add multiple amounts for MultiAccount Integration
+                        <div class="mb-3">
                             <label for="amounts">Amount</label>
                             <input type="hidden" id="account_identifiers" name="account_identifiers[]" value="{{ config('sbipay.account_identifier') }}" />
-                            <input type="text" class="form-control" id="amounts" name="amounts[]" placeholder="1.50"
-                                value="1.50" required>
-                            <div class="invalid-feedback">
-                                Please enter a valid amount.
-                            </div>
-                        </div> --}}
+                        <input type="text" class="form-control" id="amounts_1" name="amounts[]" placeholder="1.50" value="1.50" required>
+                        <div class="invalid-feedback">
+                            Please enter a valid amount.
+                        </div>
+                    </div>
+                    --}}
 
+                    <div class="row">
                         <div class="mb-3">
                             <label for="remark">Remark</label>
-                            <textarea class="form-control" id="remark" name="remark"
-                                placeholder="Enter Remark" required>{{ $remark ?? 'test'}}</textarea>
+                            <textarea class="form-control" id="remark" name="remark" placeholder="Enter Remark" required>{{ $remark ?? 'test'}}</textarea>
                             <div class="invalid-feedback">
                                 Please enter valid remark
                             </div>
                         </div>
-
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Proceed</button>
                     </div>
+
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Proceed</button>
                 </div>
             </div>
         </form>
     </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>
     <script>
         window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')
+
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" crossorigin="anonymous">
     </script>
@@ -111,6 +112,7 @@
                 });
             }, false);
         })();
+
     </script>
 </body>
 
