@@ -122,6 +122,34 @@ You can also override `payment.blade.php` with your custom design to integrate w
 https://app.test/sbi-pay/transaction/status/$sbi_transaction_id/$merchant_order_no
 ```
 
+4. Check transaction status or Initiate from Controller
+
+```php
+
+use JagdishJP\SBIPay\Facades\SBIPay;
+
+/**
+ * Returns status of transaction
+ * 
+ * @param string $sbi_transaction_id sbi transaction id
+ * @param string $merchant_order_no  merchant order no
+ * @return array
+ */
+$status = SBIPay::transactionStatus($sbi_transaction_id, $merchant_order_no);
+
+
+/**
+ * Initiates refund for any transaction
+ * 
+ * @param string $sbi_transaction_id sbi transaction id
+ * @param string $refund_order_no    refund order no
+ * @param string $amount             amount to refund partial/full
+ * @param string $merchant_order_no  merchant order no
+ * @return array
+ */
+$banks = SBIPay::initiateRefund($sbi_transaction_id, $refund_order_no, $amount, $merchant_order_no);
+
+```
 
 ### Changelog
 
