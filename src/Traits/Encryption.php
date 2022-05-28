@@ -25,7 +25,7 @@ trait Encryption
      *
      * @return string
      */
-    public function encrypt($data): string
+    public function encrypt(string $data): string
     {
         $cipherText = openssl_encrypt($data, $this->algo, $this->merchantKey, OPENSSL_RAW_DATA, $this->iv);
 
@@ -35,13 +35,12 @@ trait Encryption
     /**
      * decrypts the response data.
      *
-     * @param string $data
-     * @param mixed $cipherText
-     * @param mixed $raw
+     * @param string $cipherText
+     * @param bool $raw
      *
      * @return array
      */
-    public function decrypt($cipherText, $raw = false): array|string
+    public function decrypt(string $cipherText, bool $raw = false): array|string
     {
         $cipherText = base64_decode($cipherText);
         $plainText  = openssl_decrypt($cipherText, $this->algo, $this->merchantKey, OPENSSL_RAW_DATA, $this->iv);
