@@ -169,7 +169,6 @@ class Response
         // Merchant Reference Order no
         'merchant_order_no',
 
-        "",
+        '',
     ];
-
 }

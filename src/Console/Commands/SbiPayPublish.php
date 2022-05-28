@@ -4,7 +4,6 @@ namespace JagdishJP\SBIPay\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Str;
 
 class SbiPayPublish extends Command
 {
@@ -44,15 +43,14 @@ class SbiPayPublish extends Command
         $force = $this->option('force');
 
         foreach ($publishables as $publishable) {
-
             $parameters = ['--provider' => 'JagdishJP\SBIPay\SBIPayServiceProvider', '--tag' => "sbi-pay-{$publishable}"];
 
             $this->info("Publishing {$publishable} file.");
 
             if ($force) {
-
-                if($this->confirm("Force publishing will remove your changes made in $publishable, sure to publish?"))
-                $parameters['--force'] = null;
+                if ($this->confirm("Force publishing will remove your changes made in $publishable, sure to publish?")) {
+                    $parameters['--force'] = null;
+                }
             }
 
             Artisan::call('vendor:publish', $parameters);

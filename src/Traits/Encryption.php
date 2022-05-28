@@ -37,6 +37,7 @@ trait Encryption
      *
      * @param string $data
      * @param mixed $cipherText
+     * @param mixed $raw
      *
      * @return array
      */
@@ -45,8 +46,9 @@ trait Encryption
         $cipherText = base64_decode($cipherText);
         $plainText  = openssl_decrypt($cipherText, $this->algo, $this->merchantKey, OPENSSL_RAW_DATA, $this->iv);
 
-        if($raw)
-        return $plainText;
+        if ($raw) {
+            return $plainText;
+        }
 
         $response = explode('|', $plainText);
         foreach ($response as $key => $value) {

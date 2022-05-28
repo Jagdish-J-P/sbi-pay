@@ -8,13 +8,6 @@ use JagdishJP\SBIPay\Messages\TransactionStatusMessage;
 
 class SBIPay
 {
-    public function transactionStatus(string $sbi_transaction_id, string $merchant_order_no)
-    {
-        $transactionStatus = (new TransactionStatusMessage())->handle(compact('sbi_transaction_id', 'merchant_order_no'));
-
-        return $transactionStatus->get();
-    }
-
     public static function initiateRefund(string $refund_order_no, string $sbi_transaction_id, int $refund_amount, string $merchant_order_no)
     {
         $refundRequest = (new RefundRequestMessage())
@@ -23,11 +16,20 @@ class SBIPay
         return $refundRequest->post();
     }
 
-    public static function encrypt($data){
+    public static function encrypt($data)
+    {
         return resolve(Message::class)->encrypt($data);
     }
 
-    public static function decrypt($cipherText){
+    public static function decrypt($cipherText)
+    {
         return resolve(Message::class)->decrypt($cipherText, true);
+    }
+
+    public function transactionStatus(string $sbi_transaction_id, string $merchant_order_no)
+    {
+        $transactionStatus = (new TransactionStatusMessage())->handle(compact('sbi_transaction_id', 'merchant_order_no'));
+
+        return $transactionStatus->get();
     }
 }

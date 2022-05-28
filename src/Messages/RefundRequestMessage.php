@@ -38,10 +38,10 @@ class RefundRequestMessage extends Message implements Contract
     public function handle($options)
     {
         $data = Validator::make($options, [
-            'refund_order_no' => 'required',
+            'refund_order_no'    => 'required',
             'sbi_transaction_id' => 'required',
-            'merchant_order_no' => 'required',
-            'refund_amount' => 'required|integer',
+            'merchant_order_no'  => 'required',
+            'refund_amount'      => 'required|integer',
         ])->validate();
 
         $this->transactionId   = $data['sbi_transaction_id'];
@@ -60,8 +60,10 @@ class RefundRequestMessage extends Message implements Contract
         ]);
 
         $response = $res->getBody();
-        if($this->encryptRefundRequest)
+
+        if ($this->encryptRefundRequest) {
             $response = $this->decrypt($response);
+        }
 
         $response = explode('|', $response);
 
@@ -90,10 +92,10 @@ class RefundRequestMessage extends Message implements Contract
         return collect([
             'aggregator_id'      => $this->aggregatorId,
             'merchant_id'        => $this->merchantId,
-            'refund_order_no' => $this->refundOrderNo,
+            'refund_order_no'    => $this->refundOrderNo,
             'sbi_transaction_id' => $this->transactionId,
             'refund_amount'      => $this->amount,
-            'currency' => $this->currency,
+            'currency'           => $this->currency,
             'merchant_order_no'  => $this->merchantOrderNo,
         ]);
     }
