@@ -62,7 +62,7 @@ class RefundRequestMessage extends Message implements Contract
         $response = $res->getBody();
 
         if ($this->encryptRefundRequest) {
-            $response = $this->decrypt($response);
+            return $this->decrypt($response);
         }
 
         $response = explode('|', $response);
