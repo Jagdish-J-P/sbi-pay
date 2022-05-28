@@ -13,7 +13,7 @@ class SbiPayPublish extends Command
      *
      * @var string
      */
-    protected $signature = 'sbi-pay:publish {--force : override existing files.}';
+    protected $signature = 'sbi-pay:publish {--force}';
 
     /**
      * The console command description.
@@ -41,27 +41,24 @@ class SbiPayPublish extends Command
     {
         $publishables = ['config', 'controller', 'assets', 'views'];
 
-        $force = $this->argument('force');
+        $force = $this->option('force');
 
         foreach ($publishables as $publishable) {
-            if (! empty($force) && ! Str::is($force, 'force')) {
-                $this->error('Invalid Argument. syntax: php artisan fpx:publish force');
-
-                return 0;
-            }
 
             $parameters = ['--provider' => 'JagdishJP\SBIPay\SBIPayServiceProvider', '--tag' => "sbi-pay-{$publishable}"];
 
-            if (Str::is($force, 'force')) {
+            $this->info("Publishing {$publishable} file.");
+
+            if ($force) {
+
+                if($this->confirm("Force publishing will remove your changes made in $publishable, sure to publish?"))
                 $parameters['--force'] = null;
             }
-
-            $this->info("Publishing {$publishable} file.");
 
             Artisan::call('vendor:publish', $parameters);
         }
 
-        Artisan::call('config:cache');
+        Artisan::call('optimize');
 
         $this->info('Publishing completed.');
     }

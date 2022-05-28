@@ -18,7 +18,7 @@ class TransactionStatusMessage extends Message implements Contract
 
         $this->url = app()->isLocal()
         ? Config::get('sbipay.urls.uat.transaction_status')
-        : COnfig::get('sbipay.urls.production.transaction_status');
+        : Config::get('sbipay.urls.production.transaction_status');
     }
 
     /**

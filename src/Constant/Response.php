@@ -145,4 +145,31 @@ class Response
         'ref9',
         'na',
     ];
+
+    /** constant to name response parameters of status */
+    public const RESPONSE_PARAMETERS_REFUND = [
+        // Merchant Reference Order no
+        'merchant_id',
+
+        // SBI Transaction Id / ATRN
+        'sbi_transaction_id',
+
+        // SBI Refund Transaction Id / ARRN
+        'sbi_refund_transaction_id',
+
+        // Transaction status [SUCCESS, FAIL, PENDING]
+        'transaction_status',
+
+        // Reason for transaction failure
+        'reason',
+
+        // Refund Order No
+        'refund_order_no',
+
+        // Merchant Reference Order no
+        'merchant_order_no',
+
+        "",
+    ];
+
 }

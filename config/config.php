@@ -84,6 +84,9 @@ return [
     // Middleware
     'middleware' => ['web'],
 
+    // use Encrypted Refund Request
+    'encrypt_refund_request' => env('SBIEPAY_ENCRYPT_REFUND_REQUEST', false),
+
     /*
      * Urls List
      *
@@ -96,13 +99,15 @@ return [
     'urls' => [
         'uat' => [
             'initiate_payment'   => 'https://test.sbiepay.sbi/secure/AggregatorHostedListener',
-            'initiate_refund'    => 'https://test.sbiepay.sbi/payagg/bookRefundCancellation/AggStandardEncRefundQueryService',
+            'initiate_refund_enc'    => 'https://test.sbiepay.sbi/payagg/bookRefundCancellation/AggStandardEncRefundQueryService',
+            'initiate_refund'    => 'https://test.sbiepay.sbi/payagg/orderRefundCancellation/bookRefundCancellation',
             'transaction_status' => 'https://test.sbiepay.sbi/payagg/orderStatusQuery/getOrderStatusQuery',
         ],
         'production' => [
-            'initiate_payment'   => 'https://test.sbiepay.sbi/secure/AggregatorHostedListener',
-            'initiate_refund'    => 'https://test.sbiepay.sbi/payagg/bookRefundCancellation/AggStandardEncRefundQueryService',
-            'transaction_status' => 'https://test.sbiepay.sbi/payagg/orderStatusQuery/getOrderStatusQuery',
+            'initiate_payment'   => 'https://sbiepay.sbi/secure/AggregatorHostedListener',
+            'initiate_refund_enc'    => 'https://sbiepay.sbi/payagg/bookRefundCancellation/AggStandardEncRefundQueryService',
+            'initiate_refund'    => 'https://sbiepay.sbi/payagg/orderRefundCancellation/bookRefundCancellation',
+            'transaction_status' => 'https://sbiepay.sbi/payagg/orderStatusQuery/getOrderStatusQuery',
         ],
     ],
 ];

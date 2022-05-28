@@ -40,10 +40,13 @@ trait Encryption
      *
      * @return array
      */
-    public function decrypt($cipherText): array
+    public function decrypt($cipherText, $raw = false): array|string
     {
         $cipherText = base64_decode($cipherText);
         $plainText  = openssl_decrypt($cipherText, $this->algo, $this->merchantKey, OPENSSL_RAW_DATA, $this->iv);
+
+        if($raw)
+        return $plainText;
 
         $response = explode('|', $plainText);
         foreach ($response as $key => $value) {

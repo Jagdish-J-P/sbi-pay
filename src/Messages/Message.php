@@ -46,6 +46,12 @@ class Message
     /** order no of merchant */
     public $merchantOrderNo;
 
+    /** refund order no of merchant */
+    public $refundOrderNo;
+
+    /** should use encrypted refund request */
+    public $encryptRefundRequest;
+
     /** The selected bank ID by the customer */
     public $targetBankId;
 
@@ -94,6 +100,7 @@ class Message
         $this->failUrl                  = Config::get('sbipay.fail_url');
         $this->payMode                  = Config::get('sbipay.pay_mode');
         $this->accountIdentifier[]      = Config::get('sbipay.account_identifier');
+        $this->encryptRefundRequest      = Config::get('sbipay.encrypt_refund_request');
 
         $this->referenceId              = Str::random(12);
         $this->merchantCustomerId       = 'NA';
