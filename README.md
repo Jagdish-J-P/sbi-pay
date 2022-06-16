@@ -122,7 +122,7 @@ You can also override `payment.blade.php` with your custom design to integrate w
 https://app.test/sbi-pay/transaction/status/$sbi_transaction_id/$merchant_order_no
 ```
 
-4. Check transaction status or Initiate from Controller
+4. Check transaction status or Initiate Refund from Controller
 
 ```php
 
