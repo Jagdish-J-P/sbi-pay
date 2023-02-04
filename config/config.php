@@ -101,13 +101,13 @@ return [
             'initiate_payment'       => 'https://test.sbiepay.sbi/secure/AggregatorHostedListener',
             'initiate_refund_enc'    => 'https://test.sbiepay.sbi/payagg/bookRefundCancellation/AggStandardEncRefundQueryService',
             'initiate_refund'        => 'https://test.sbiepay.sbi/payagg/orderRefundCancellation/bookRefundCancellation',
-            'transaction_status'     => 'https://test.sbiepay.sbi/payagg/orderStatusQuery/getOrderStatusQuery',
+            'transaction_status'     => 'https://test.sbiepay.sbi/payagg/statusQuery/getStatusQuery',
         ],
         'production' => [
             'initiate_payment'       => 'https://sbiepay.sbi/secure/AggregatorHostedListener',
             'initiate_refund_enc'    => 'https://sbiepay.sbi/payagg/bookRefundCancellation/AggStandardEncRefundQueryService',
             'initiate_refund'        => 'https://sbiepay.sbi/payagg/orderRefundCancellation/bookRefundCancellation',
-            'transaction_status'     => 'https://sbiepay.sbi/payagg/orderStatusQuery/getOrderStatusQuery',
+            'transaction_status'     => 'https://sbiepay.sbi/payagg/statusQuery/getStatusQuery',
         ],
     ],
 ];

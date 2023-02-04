@@ -33,10 +33,12 @@ class TransactionStatusMessage extends Message implements Contract
         $data = Validator::make($options, [
             'sbi_transaction_id' => 'required',
             'merchant_order_no'  => 'required',
+            'amount'  => 'required',
         ])->validate();
 
         $this->transactionId   = $data['sbi_transaction_id'];
         $this->merchantOrderNo = $data['merchant_order_no'];
+        $this->amount          = $data['amount'];
 
         return $this;
     }
@@ -74,6 +76,7 @@ class TransactionStatusMessage extends Message implements Contract
             'sbi_transaction_id' => $this->transactionId,
             'merchant_id'        => $this->merchantId,
             'merchant_order_no'  => $this->merchantOrderNo,
+            'amount'             => $this->amount,
         ]);
     }
 
